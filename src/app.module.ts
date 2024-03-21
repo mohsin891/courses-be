@@ -19,7 +19,6 @@ import { CategoriesModule } from './categories/categories.module';
       cache: true
     }),
     MongooseModule.forRoot(process.env.DB_CONNECTION_STRING, {
-
     }),
     CategoriesModule,
   ],
