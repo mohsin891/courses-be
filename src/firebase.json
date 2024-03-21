@@ -1,0 +1,13 @@
+{
+  "TYPE": "service_account",
+  "PORJECT_ID": "raza-academy-mobile",
+  "PRIVATE_KEY_ID": "c034f9c27c86f4ee958ccc9386ec6d9bd9eac2f6",
+  "PRIVATE_KEY": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDCuhFcbOw2Skaq\nkzGXk5pKEQi2L0rg2KY2aHzD+qctU5rQoYr7RmRFUuybUvUt0P5Ev/qfcKSfzkoX\nad5CEbKJl5v4TX2yW62WhqoVZcQZPyWnXDITAYK8UJtu66tXHNVzpaykJaKMc0Fx\nb92m3MKJ7qOFZxH8PhgLIAWF0xBtBaL34IZKq6WrIybmElowUoBdLMtt4Fs3pyv0\nL+gWBkBdKMHor18TTSSIP6fKhTT+1CZtsNbqmsQBZxiKBlm9uILZbg0lz1Da2JYn\nRbJ9xsFPTY/C4jXpi4TIxpFTghyKa2Dg2oR7Qqd9hjTXgbNws9Yn28zRne/iiaFp\n5Mt+VT4BAgMBAAECggEAFgx01B75OBnSRT+EHqz14WvAWBtOwoWFfHpO9kSMEr55\nXyTg1HGJ/6zTYbBTrAESvrzGJ1uH0xh2nI6+PdjnJbE8VdyLCQZcchjZarF/3M6g\n+CxLod9KlawYOB0Ij5qSM2q6UPPPTfvsQxNEPmqXadV9lSiwiVE2mRE3zt6xPhwc\ntfu455sBvlOvI1FCXPija355EPbOqtOFfgDAgognbSzNqqjevuGKsCqeBsAYS2R4\nOvaBoK1A+FE66h1LrRRWKdt8jeQI9vpSBWVfE2RfLIAP0AvCa6sYySk6yiZnKP9n\nUAnEUhEVcjnzRFCgS0dkW9qfD0q8mw8ipTD55wmhSQKBgQDibXtPa74BooGksRUZ\nZ9qiUI1ZLOKc3CPkv7KjgQSYv0NbKgj91ZWrnNBfyRpBJCDv/CoAZEOEaUlu4Gra\ntZG6yXJB9ACqOtsk2kluVDYzYT8XjSc7ZczdozjfJt43vfzIeetoKU07tgqmFbc4\nfur0LvczOPiPzr9S8lu3hw6XPwKBgQDcKK5vWyvIdr79FASrcZcQNIeN3zRbA+F4\nantu7LN7sGzbwiCR9hC+5GXkHtRATA7UfO6E8/3o/tJeOdlNImpsluJANgqr21Qi\n/95IUmI3GivxeqBr/NPF7uhh0JqOmLvz40BgSZWrsZvL5tiC84sezqIf9Vx+21ZJ\noDvDoWoavwKBgEWe8jZmY4LvK7uu81TfePtFl2CfC4K9sY+pXc0mY3pv/M7wKtmZ\nra6ZxfxdwmPbLwF7YJLEQXpaQUkFWfWrtIZhYG9lDjtJY45+S+vPmubLdPHR5gk+\ncPKJOHhs5BDxquMdkcNyR5wfikCtFqwZYjb4peurDcpyAKQJfyf8MAFTAoGBALsA\npyIZK/hrvNCU116U7n6qT9XXGM6SXkr9D3lp/w56Dg0gOLAidZjfwhhhg2JV+GbO\n837lDPCCukelFYnqSMGR6/4kqS3O8AmGktWVfK1XQqorweXX7D39L1Aec5nZ7BQ+\nHGltN3+OLkqk+5VHrwzs8VL6A6YRQprpSrph+hFbAoGAMkwg2LXjSBEd8eKoSvFx\nPrF9DX4zRLcKP2QyTwcUnWdZfF0ky6plDqaxyu8hcc5jr8APpead7C0qCVDPaBnv\nwQIr+z74/Ohei4tRVCysc93jzafiDmHQ3pRsGIL1E/r4UlVZMIOrBf3DyezeBLwM\nfMLUr1Ov5NYCAV+e6gE6uf4=\n-----END PRIVATE KEY-----\n",
+  "CLIENT_EMAIL": "firebase-adminsdk-8x5qq@raza-academy-mobile.iam.gserviceaccount.com",
+  "CLIENT_ID": "117459908832316233456",
+  "AUTH_URI": "https://accounts.google.com/o/oauth2/auth",
+  "TOKEN_URI": "https://oauth2.googleapis.com/token",
+  "AUTH_CERT_URL": "https://www.googleapis.com/oauth2/v1/certs",
+  "CLIENT_CERT_URL": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-8x5qq%40raza-academy-mobile.iam.gserviceaccount.com",
+  "UNIVERSAL_DOMAIN": "googleapis.com"
+}
