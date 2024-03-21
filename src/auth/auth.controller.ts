@@ -32,6 +32,11 @@ export class AuthController {
     return this.authService.refresh(dto);
   }
 
+  @Get("/test")
+  test() {
+    return this.authService.signUp()
+  }
+
   @UseGuards(JwtAuthGuard)
   @Get('/me')
   getProfile(@Req() request: IRequest) {

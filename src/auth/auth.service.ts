@@ -75,6 +75,13 @@ export class AuthService {
     };
   }
 
+  async signUp() {
+    const link = await admin.auth().generateEmailVerificationLink("nazimraza350@gmail.com")
+    const response = await this.httpService.get('https://firebasestorage.googleapis.com/v0/b/raza-academy-mobile.appspot.com/o/html%2Ftemp.html?alt=media&token=931e6691-6401-46dc-be9d-5be244b223a6').toPromise()
+    const htmlContent = response.data.replace("{{VERIFICATION_LINK}}", `"${link}"`)
+    await this.emailService.sendEmail("nazimraza350@gmail.com", "Raza Academy Email Verification", htmlContent)
+  }
+
   async refresh(dto: RefreshDto) {
     try {
       var decodedToken = await this.jwtService.verifyAsync(dto.refreshToken);
