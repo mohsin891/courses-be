@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { CategoriesModule } from './categories/categories.module';
+import { CardsModule } from './cards/cards.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { CategoriesModule } from './categories/categories.module';
     MongooseModule.forRoot(process.env.DB_CONNECTION_STRING, {
     }),
     CategoriesModule,
+    CardsModule,
   ],
   controllers: [],
   // providers: [],
