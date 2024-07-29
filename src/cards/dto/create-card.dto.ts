@@ -1,4 +1,3 @@
-// create-card.dto.ts
 import { IsArray, IsNumber, IsOptional, IsString, IsUrl, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 

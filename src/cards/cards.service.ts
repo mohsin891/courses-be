@@ -17,8 +17,8 @@ export class CardsService {
     return await this.cardsModel.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} card`;
+  async findOne(id: string) {
+    return this.cardsModel.findById(id)
   }
 
   update(id: number, updateCardDto: UpdateCardDto) {

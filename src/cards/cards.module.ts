@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { CardsService } from './cards.service';
 import { CardsController } from './cards.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { BusinessCard, CardSchema } from 'src/entities/cards.entity';
+import { BusinessCard, BusinessCardSchema } from 'src/entities/cards.entity';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { BusinessCard, CardSchema } from 'src/entities/cards.entity';
       {
         name: BusinessCard.name,
         useFactory: () => {
-          return CardSchema
+          return BusinessCardSchema
         }
       }
     ])
