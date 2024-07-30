@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-@Schema({_id: false})
+@Schema({ _id: false })
 export class TextStyle {
   @Prop({ required: true })
   fontSize: number;
@@ -15,7 +15,7 @@ export class TextStyle {
 
 export const TextStyleSchema = SchemaFactory.createForClass(TextStyle);
 
-@Schema({_id: false})
+@Schema({ _id: false })
 export class BoxState {
   @Prop({ required: true })
   id: string;
@@ -50,7 +50,7 @@ export class BoxState {
 
 export const BoxStateSchema = SchemaFactory.createForClass(BoxState);
 
-@Schema({_id: false})
+@Schema({ _id: false })
 export class Layout {
   @Prop({ required: true })
   x: number;
@@ -67,13 +67,16 @@ export class Layout {
 
 export const LayoutSchema = SchemaFactory.createForClass(Layout);
 
-@Schema({_id: false})
+@Schema({ _id: false })
 export class Style {
   @Prop()
   height?: number;
 
   @Prop()
   width?: number;
+
+  @Prop()
+  ratio?: number;
 
   @Prop()
   backgroundColor?: string;
@@ -84,7 +87,7 @@ export class Style {
 
 export const StyleSchema = SchemaFactory.createForClass(Style);
 
-@Schema({_id: false})
+@Schema({ _id: false })
 export class Card {
   @Prop({ required: true })
   id: string;
