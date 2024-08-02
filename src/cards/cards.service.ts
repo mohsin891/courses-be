@@ -7,22 +7,25 @@ import { ICardModel } from 'src/interfaces/cards.interface';
 
 @Injectable()
 export class CardsService {
-  constructor(@InjectModel(BusinessCard.name) private readonly cardsModel: ICardModel) {}
+  constructor(
+    @InjectModel(BusinessCard.name) private readonly cardsModel: ICardModel,
+  ) {}
   async create(createCardDto: CreateCardDto) {
     const cards = await this.cardsModel.create(createCardDto);
-    return cards
+    return cards;
   }
 
   async findAll() {
-    return await this.cardsModel.find()
+    return await this.cardsModel.find();
   }
 
   async findOne(id: string) {
-    return this.cardsModel.findById(id)
+    return this.cardsModel.findById(id);
   }
 
-  update(id: number, updateCardDto: UpdateCardDto) {
-    return `This action updates a #${id} card`;
+  async update(id: string, updateCardDto: UpdateCardDto) {
+    const cards = await this.cardsModel.findByIdAndUpdate(id, updateCardDto);
+    return cards;
   }
 
   remove(id: number) {
