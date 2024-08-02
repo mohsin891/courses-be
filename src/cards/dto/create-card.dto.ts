@@ -1,4 +1,11 @@
-import { IsArray, IsNumber, IsOptional, IsString, IsUrl, ValidateNested } from 'class-validator';
+import {
+  IsArray,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUrl,
+  ValidateNested,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 class TextStyleDto {
@@ -96,8 +103,12 @@ class CardDto {
   colors?: string[];
 
   @IsOptional()
-  @IsUrl()
+  @IsString()
   imageUri?: string;
+
+  @IsOptional()
+  @IsString()
+  snap?: string;
 
   @IsOptional()
   @ValidateNested()

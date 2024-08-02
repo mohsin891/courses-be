@@ -104,6 +104,9 @@ export class Card {
   @Prop()
   imageUri?: string;
 
+  @Prop()
+  snap?: string;
+
   @Prop({ type: LayoutSchema })
   layout?: Layout;
 }
