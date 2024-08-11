@@ -76,7 +76,13 @@ export class Style {
   width?: number;
 
   @Prop()
-  ratio?: number;
+  htRatio?: number;
+
+  @Prop()
+  wdRatio?: number;
+
+  @Prop()
+  opacity?: number;
 
   @Prop()
   backgroundColor?: string;

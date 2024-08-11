@@ -79,6 +79,18 @@ class StyleDto {
   width?: number;
 
   @IsOptional()
+  @IsNumber()
+  wdRatio?: number;
+
+  @IsOptional()
+  @IsNumber()
+  htRatio?: number;
+
+  @IsOptional()
+  @IsNumber()
+  opacity?: number;
+
+  @IsOptional()
   @IsString()
   backgroundColor?: string;
 
