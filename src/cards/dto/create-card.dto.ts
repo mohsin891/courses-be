@@ -49,6 +49,9 @@ class BoxStateDto {
   @IsString()
   textContent?: string;
 
+  @IsString()
+  type: 'qrcode' | 'text' | 'image';
+
   @IsOptional()
   @ValidateNested()
   @Type(() => TextStyleDto)
