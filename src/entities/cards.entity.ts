@@ -46,6 +46,9 @@ export class BoxState {
 
   @Prop({ type: TextStyleSchema })
   textStyle?: TextStyle;
+
+  @Prop({ required: true })
+  type: 'image' | 'text' | 'qrcode';
 }
 
 export const BoxStateSchema = SchemaFactory.createForClass(BoxState);
