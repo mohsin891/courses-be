@@ -16,12 +16,12 @@ async function bootstrap() {
   const configService: ConfigService = app.get(ConfigService);
   // Set the config options
   const adminConfig: ServiceAccount = {
-    "projectId": configService.get<string>('PORJECT_ID'),
-    "privateKey": configService.get<string>('PRIVATE_KEY')
-      .replace(/\\n/g, '\n'),
-    "clientEmail": configService.get<string>('CLIENT_EMAIL'),
+    projectId: configService.get<string>('PORJECT_ID'),
+    privateKey: configService.get<string>('PRIVATE_KEY').replace(/\\n/g, '\n'),
+    clientEmail: configService.get<string>('CLIENT_EMAIL'),
   };
   // Initialize the firebase admin app
+
   admin.initializeApp({
     credential: admin.credential.cert(adminConfig),
     databaseURL: `https://${configService.get<string>('PORJECT_ID')}.firebaseio.com`,
