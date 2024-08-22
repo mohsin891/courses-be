@@ -21,17 +21,22 @@ import { Roles } from 'src/auth/roles.decorator';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) { }
+  constructor(private readonly usersService: UsersService) {}
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
+  @Get('check')
+  check() {
+    return this.usersService.check();
+  }
+
   @Get('send-verification-email/:email')
   async sendVerificationEmail(@Param('email') email: string) {
     try {
-      const link = await admin.auth().generateEmailVerificationLink(email)
+      const link = await admin.auth().generateEmailVerificationLink(email);
       //   // Action code settings. See documentation for available options.
       //   url: '',
       //   android: {
