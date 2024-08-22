@@ -29,6 +29,6 @@ export class CardsService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} card`;
+    return `This action removes but not remove`;
   }
 }
