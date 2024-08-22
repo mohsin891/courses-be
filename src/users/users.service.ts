@@ -16,12 +16,12 @@ import * as bcrypt from 'bcrypt';
 export class UsersService {
   constructor(
     @InjectModel(User.name) private readonly userModel: Model<IUserDocument>,
-  ) { }
+  ) {}
 
   async create(createUserDto: CreateUserDto) {
     const exists = await this.findOne(createUserDto.email);
     if (exists) {
-      return exists
+      return exists;
     }
     const user = new this.userModel({ ...createUserDto, role: 'user' });
     await user.save();
@@ -54,6 +54,10 @@ export class UsersService {
         modifiedOn: Date.now(),
       },
     });
+  }
+
+  check() {
+    return 'This is just check endpoint';
   }
 
   remove(id: string) {
