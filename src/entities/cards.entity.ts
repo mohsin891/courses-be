@@ -14,6 +14,9 @@ export class TextStyle {
 
   @Prop({ required: true })
   color: string;
+
+  @Prop({ required: false })
+  textAlign: 'left' | 'center' | 'right';
 }
 
 export const TextStyleSchema = SchemaFactory.createForClass(TextStyle);

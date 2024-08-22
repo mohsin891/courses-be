@@ -19,6 +19,9 @@ class TextStyleDto {
   letterSpacing: number;
 
   @IsString()
+  textAlign: 'left' | 'center' | 'right';
+
+  @IsString()
   color: string;
 }
 
