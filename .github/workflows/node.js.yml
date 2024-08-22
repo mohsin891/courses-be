@@ -34,7 +34,7 @@ jobs:
          server: ftp.softanalyst.com
          username: ${{ secrets.FTP_USERNAME }}
          password: ${{ secrets.FTP_PASSWORD }}
-         server-dir: api.softanalyst.com/
+         server-dir: /api.softanalyst.com/
          exclude: |
             **/.git**
             **/.git*/**
