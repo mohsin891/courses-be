@@ -31,7 +31,7 @@ jobs:
     - name: Upload to cPanel 📂
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-         server: ftp://ftp.softanalyst.com:21
+         server: ftp.softanalyst.com:21
          username: ${{ secrets.FTP_USERNAME }}
          password: ${{ secrets.FTP_PASSWORD }}
          server-dir: /api.softanalyst.com/
