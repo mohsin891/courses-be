@@ -7,6 +7,9 @@ export class TextStyle {
   fontSize: number;
 
   @Prop({ required: true })
+  letterSpacing: number;
+
+  @Prop({ required: true })
   fontFamily: string;
 
   @Prop({ required: true })

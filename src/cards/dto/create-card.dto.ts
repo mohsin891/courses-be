@@ -16,6 +16,9 @@ class TextStyleDto {
   fontFamily: string;
 
   @IsString()
+  letterSpacing: number;
+
+  @IsString()
   color: string;
 }
 
