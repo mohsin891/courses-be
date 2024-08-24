@@ -15,7 +15,7 @@ export class TextStyle {
   @Prop({ required: true })
   color: string;
 
-  @Prop({ required: false })
+  @Prop({ required: false, default: 'left' })
   textAlign: 'left' | 'center' | 'right';
 }
 
@@ -49,6 +49,12 @@ export class BoxState {
 
   @Prop()
   textContent?: string;
+
+  @Prop()
+  qrcode?: string;
+
+  @Prop()
+  qrcolor?: string;
 
   @Prop({ type: TextStyleSchema })
   textStyle?: TextStyle;

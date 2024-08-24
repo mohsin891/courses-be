@@ -55,6 +55,14 @@ class BoxStateDto {
   @IsString()
   textContent?: string;
 
+  @IsOptional()
+  @IsString()
+  qrcode?: string;
+
+  @IsOptional()
+  @IsString()
+  qrcolor?: string;
+
   @IsString()
   type: 'qrcode' | 'text' | 'image';
 
