@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { CategoriesModule } from './categories/categories.module';
 import { CardsModule } from './cards/cards.module';
+import { AssetsModule } from './assets/assets.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { CardsModule } from './cards/cards.module';
     }),
     CategoriesModule,
     CardsModule,
+    AssetsModule,
   ],
   controllers: [],
   // providers: [],
