@@ -1,7 +1,7 @@
 import { Document, Model } from 'mongoose';
-import { Asset } from 'src/assets/entities/asset.entity';
+import { Assets } from 'src/entities/assets.entity';
 
-type IAssetsDocument = Document & Asset;
+type IAssetsDocument = Document & Assets;
 
 type IAssetsModel = Model<IAssetsDocument>;
 export { IAssetsDocument, IAssetsModel };

@@ -13,6 +13,9 @@ export class Assets {
 
   @Prop({ required: false })
   createdOn: Date;
+
+  @Prop({ required: true })
+  priority: number;
 }
 
 export const AssetSchema = SchemaFactory.createForClass(Assets);

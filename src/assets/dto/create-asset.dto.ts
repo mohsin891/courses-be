@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateAssetDto {
   @IsString()
@@ -10,4 +10,7 @@ export class CreateAssetDto {
   @IsOptional()
   @IsString()
   type: 'image' | 'icon';
+
+  @IsNumber()
+  priority: number;
 }
