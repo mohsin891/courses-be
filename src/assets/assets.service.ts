@@ -19,7 +19,7 @@ export class AssetsService {
   }
 
   async findAll() {
-    return await this.AssetsModel.find();
+    return await this.AssetsModel.find().sort({ createdOn: 1 });
   }
 
   async findOne(id: string) {

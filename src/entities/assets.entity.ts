@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
-@Schema()
+@Schema({ timestamps: true })
 export class Assets {
   @Prop({ required: true })
   url: string;
@@ -10,6 +10,9 @@ export class Assets {
 
   @Prop({ required: true, default: 'icon' })
   type: 'image' | 'icon';
+
+  @Prop({ required: false })
+  createdOn: Date;
 }
 
 export const AssetSchema = SchemaFactory.createForClass(Assets);
