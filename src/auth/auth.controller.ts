@@ -1,4 +1,13 @@
-import { Controller, Post, Get, Body, Req, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  Req,
+  UseGuards,
+  UseInterceptors,
+  UploadedFile,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RefreshDto } from './dto/auth.dto';
 import { LocalAuthGuard } from './auth-guards/local.guard';
@@ -6,10 +15,11 @@ import { IRequest } from './interfaces/IRequest.interface';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { JwtAuthGuard } from './auth-guards/jwt.guard';
 import { VerifyDto } from './dto/verify.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   @Post('register')
   async register(@Body() dto: VerifyDto) {
@@ -18,7 +28,7 @@ export class AuthController {
 
   @Post('/verify')
   async verifyUserToken(@Body() token: VerifyDto) {
-    return await this.authService.validateToken(token)
+    return await this.authService.validateToken(token);
   }
 
   @Post('signin')
@@ -32,9 +42,16 @@ export class AuthController {
     return this.authService.refresh(dto);
   }
 
-  @Get("/test")
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadImage(@UploadedFile() file: Express.Multer.File) {
+    const url = await this.authService.uploadImage(file);
+    return { imageUrl: url };
+  }
+
+  @Get('/test')
   test() {
-    return this.authService.signUp()
+    return this.authService.signUp();
   }
 
   @UseGuards(JwtAuthGuard)

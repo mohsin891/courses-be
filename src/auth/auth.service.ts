@@ -1,7 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt/dist';
 import { UsersService } from 'src/users/users.service';
+import { Express } from 'express';
 import * as bcrypt from 'bcrypt';
+import uuidv4 from 'uuid';
 import * as admin from 'firebase-admin';
 import { RefreshDto } from './dto/auth.dto';
 import { IUserDocument } from 'src/users/interfaces/user.interface';
@@ -17,7 +19,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly httpService: HttpService,
     private readonly emailService: EmailService,
-  ) { }
+  ) {}
 
   async validateUser(
     email: string,
@@ -35,7 +37,7 @@ export class AuthService {
     const decoded = await admin.auth().verifyIdToken(token.token);
     const user = await this.userService.findOne(decoded.email);
     if (!user) {
-      throw new UnauthorizedException("User is not register")
+      throw new UnauthorizedException('User is not register');
     }
     const payload = user.toJSON();
     return {
@@ -47,14 +49,30 @@ export class AuthService {
 
   async registerUser(token: VerifyDto) {
     const decoded = await admin.auth().verifyIdToken(token.token);
-    const createdUser = await this.userService.create({ ...decoded, role: 'user' } as any);
+    const createdUser = await this.userService.create({
+      ...decoded,
+      role: 'user',
+    } as any);
 
     if (!decoded.email_verified) {
-      const link = await admin.auth().generateEmailVerificationLink(decoded.email)
-      const response = await this.httpService.get('https://firebasestorage.googleapis.com/v0/b/raza-academy-mobile.appspot.com/o/html%2Ftemp.html?alt=media&token=931e6691-6401-46dc-be9d-5be244b223a6').toPromise()
-      const htmlContent = response.data.replace("{{VERIFICATION_LINK}}", `"${link}"`)
-      await this.emailService.sendEmail("nazimraza350@gmail.com", "Raza Academy Email Verification", htmlContent)
-      return { ...decoded }
+      const link = await admin
+        .auth()
+        .generateEmailVerificationLink(decoded.email);
+      const response = await this.httpService
+        .get(
+          'https://firebasestorage.googleapis.com/v0/b/raza-academy-mobile.appspot.com/o/html%2Ftemp.html?alt=media&token=931e6691-6401-46dc-be9d-5be244b223a6',
+        )
+        .toPromise();
+      const htmlContent = response.data.replace(
+        '{{VERIFICATION_LINK}}',
+        `"${link}"`,
+      );
+      await this.emailService.sendEmail(
+        'nazimraza350@gmail.com',
+        'Raza Academy Email Verification',
+        htmlContent,
+      );
+      return { ...decoded };
     }
 
     const payload = createdUser.toJSON();
@@ -75,11 +93,52 @@ export class AuthService {
     };
   }
 
+  async uploadImage(file: Express.Multer.File): Promise<string> {
+    const bucket = admin.storage().bucket('Images');
+    const filename = `${uuidv4()}-${file.originalname}`;
+    const fileUpload = bucket.file(filename);
+
+    const stream = fileUpload.createWriteStream({
+      metadata: {
+        contentType: file.mimetype,
+      },
+    });
+
+    stream.end(file.buffer);
+
+    return new Promise((resolve, reject) => {
+      stream.on('finish', async () => {
+        try {
+          // Make the file publicly accessible
+          await fileUpload.makePublic();
+          const publicUrl = `https://storage.googleapis.com/${bucket.name}/${filename}`;
+          resolve(publicUrl);
+        } catch (error) {
+          reject(error);
+        }
+      });
+      stream.on('error', (error) => reject(error));
+    });
+  }
+
   async signUp() {
-    const link = await admin.auth().generateEmailVerificationLink("nazimraza350@gmail.com")
-    const response = await this.httpService.get('https://firebasestorage.googleapis.com/v0/b/raza-academy-mobile.appspot.com/o/html%2Ftemp.html?alt=media&token=931e6691-6401-46dc-be9d-5be244b223a6').toPromise()
-    const htmlContent = response.data.replace("{{VERIFICATION_LINK}}", `"${link}"`)
-    await this.emailService.sendEmail("nazimraza350@gmail.com", "Raza Academy Email Verification", htmlContent)
+    const link = await admin
+      .auth()
+      .generateEmailVerificationLink('nazimraza350@gmail.com');
+    const response = await this.httpService
+      .get(
+        'https://firebasestorage.googleapis.com/v0/b/raza-academy-mobile.appspot.com/o/html%2Ftemp.html?alt=media&token=931e6691-6401-46dc-be9d-5be244b223a6',
+      )
+      .toPromise();
+    const htmlContent = response.data.replace(
+      '{{VERIFICATION_LINK}}',
+      `"${link}"`,
+    );
+    await this.emailService.sendEmail(
+      'nazimraza350@gmail.com',
+      'Raza Academy Email Verification',
+      htmlContent,
+    );
   }
 
   async refresh(dto: RefreshDto) {
@@ -91,7 +150,9 @@ export class AuthService {
       }
       return {
         access_token: this.jwtService.sign(user.toJSON(), { expiresIn: '24h' }),
-        refresh_token: this.jwtService.sign(user.toJSON(), { expiresIn: '15d' }),
+        refresh_token: this.jwtService.sign(user.toJSON(), {
+          expiresIn: '15d',
+        }),
       };
     } catch (e) {
       throw new UnauthorizedException('Invalid or expired refresh token');
